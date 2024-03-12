@@ -1,0 +1,29 @@
+.listItem{
+  background-color: rgb(160, 194, 207);
+  color: #353935;
+  margin: 0 auto 10px;
+}
+
+.listItemName{
+  display: inline-block;
+  font-weight: bold;
+  padding: 8px;
+  margin: 0;
+}
+
+.deleteButton{
+  width: 40px;
+  float: right;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  margin-right: 10px;
+  margin-top: 5px;
+  background-color: rgb(179, 80, 14);
+  cursor: pointer;
+}
+
+.completed{
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+}
