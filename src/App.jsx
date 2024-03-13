@@ -7,8 +7,8 @@ import Users from './components/Users';
 export default function App() { 
   return (
     <div>
-      <Header > To-Do List </Header>
-      <Todo />
+      {/* <Header > To-Do List </Header> */}
+      {/* <Todo /> */}
       <Users />
     </div>
   )

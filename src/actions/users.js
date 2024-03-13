@@ -42,6 +42,8 @@ export const getUserById = (id)=>{
     try{
       const response = await axios.get(`${path}/api/users/${id}`)
      
+      // console.log("Get User Response: ",response);
+
       dispatch({
         type: GET_USERBYID_SUCCESS,
         payload: response?.data?.data,
@@ -67,7 +69,7 @@ export const deleteUserById = (userId) => {
 
     try{
       const response = await axios.delete(`${path}/api/users/${userId}`);
-      console.log(response);
+      console.log("Deleted User Response: ",response);
 
       dispatch({
         type: DELETE_USER_SUCCESS,
@@ -76,6 +78,91 @@ export const deleteUserById = (userId) => {
     } catch(error){
       dispatch({
         type: DELETE_USER_FAILURE,
+        payload: error,
+      })
+    }
+  }
+}
+
+export const CREATE_USER_LOADING = '@@users/CREATE_USER_LOADING';
+export const CREATE_USER_SUCCESS = '@@users/CREATE_USER_SUCCESS';
+export const CREATE_USER_FAILURE = '@@users/CREATE_USER_FAILURE';
+
+export const createUser= (userData) => {
+  return async (dispatch) => {
+    dispatch({
+      type: CREATE_USER_LOADING,
+    })
+
+    try{
+      const response = await axios.post(`${path}/api/user`,userData);
+      
+      console.log("Create_User Response: ",response);
+
+      dispatch({
+        type: CREATE_USER_SUCCESS,
+        payload: response?.data,
+      })
+      
+    } catch(error){
+      dispatch({
+        type: CREATE_USER_FAILURE,
+        payload: error,
+      })
+    }
+  }
+}
+
+export const UPDATE_USER_LOADING = '@@users/UPDATE_USER_LOADING';
+export const UPDATE_USER_SUCCESS = '@@users/UPDATE_USER_SUCCESS';
+export const UPDATE_USER_FAILURE = '@@users/UPDATE_USER_FAILURE';
+
+export const updateUser= (userData,userId) => {
+  return async (dispatch) => {
+    dispatch({
+      type: UPDATE_USER_LOADING,
+    })
+
+    try{
+      const response = await axios.put(`${path}/api/user/${userId}`,userData);
+      console.log("Update_User(PUT) Response: ",response);
+
+      dispatch({
+        type: UPDATE_USER_SUCCESS,
+        payload: response?.data,
+      })
+      
+    } catch(error){
+      dispatch({
+        type: UPDATE_USER_FAILURE,
+        payload: error,
+      })
+    }
+  }
+}
+
+export const UPDATE_USER_DETAIL_LOADING = '@@users/UPDATE_USER_DETAIL_LOADING';
+export const UPDATE_USER_DETAIL_SUCCESS = '@@users/UPDATE_USER_DETAIL_SUCCESS';
+export const UPDATE_USER_DETAIL_FAILURE = '@@users/UPDATE_USER_DETAIL_FAILURE';
+
+export const updateUserDetail = (userData, userId) =>{
+  return async(dispatch) => {
+    dispatch({
+      type: UPDATE_USER_DETAIL_LOADING,
+    })
+
+    try{
+      const response = await axios.put(`${path}/api/user/${userId}`,userData);
+      console.log("Update_User(PATCH) Response: ",response);
+
+      dispatch({
+        type: UPDATE_USER_DETAIL_SUCCESS,
+        payload: response?.data,
+      })
+
+    }catch(error){
+      dispatch({
+        type: UPDATE_USER_DETAIL_FAILURE,
         payload: error,
       })
     }
