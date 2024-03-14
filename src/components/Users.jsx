@@ -48,7 +48,7 @@ const Users = () => {
     e.stopPropagation();
     dispatch(updateUserDetail({
       name: `${user.first_name} ${user.last_name}`,
-    }),user.id);
+    },user.id));
   }
 
   const handleSubmit = (e) =>{

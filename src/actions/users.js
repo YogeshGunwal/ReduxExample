@@ -152,7 +152,7 @@ export const updateUserDetail = (userData, userId) =>{
     })
 
     try{
-      const response = await axios.put(`${path}/api/user/${userId}`,userData);
+      const response = await axios.patch(`${path}/api/user/${userId}`,userData);
       console.log("Update_User(PATCH) Response: ",response);
 
       dispatch({
